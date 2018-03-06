@@ -13,4 +13,9 @@ public class TestDoctor {
     public void checkDocName() {
         assertEquals("Dr Roberts", doctor.getName());
     }
+
+    @Test
+    public void testTreatPatient(){
+        assertEquals("medicine provided", doctor.administer());
+    }
 }
