@@ -1,9 +1,9 @@
-public abstract class People {
+public abstract class Person {
     private String name;
 //    room?
 
 
-    public People (String name) {
+    public Person(String name) {
         this.name = name;
 
     }

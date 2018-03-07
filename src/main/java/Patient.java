@@ -1,4 +1,4 @@
-public class Patient extends People {
+public class Patient extends Person {
 
     private SymptomLevel symptomlevel;
 

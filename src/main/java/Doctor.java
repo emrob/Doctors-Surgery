@@ -1,4 +1,4 @@
-public class Doctor extends People implements ISurgery {
+public class Doctor extends Person implements ISurgery {
 
     private String hoursWorked;
 
