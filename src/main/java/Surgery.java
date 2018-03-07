@@ -2,39 +2,43 @@ import java.util.ArrayList;
 
 public class Surgery {
 
-    private Patient patient;
     private Doctor doctor;
     private Nurse nurse;
-    private ArrayList<People> waitingRoom;
-    private ArrayList<People> doctorsRoom;
+    private ArrayList<Person> waitingRoom;
+    private ArrayList<Person> doctorsRoom;
 
 
-    public Surgery(Patient patient, Doctor doctor, Nurse nurse,ArrayList<People> waitingRoom,ArrayList<People> doctorsRoom){
-        this.patient = patient;
+    public Surgery(Doctor doctor, Nurse nurse){
         this.doctor = doctor;
         this.nurse = nurse;
-        this.waitingRoom = waitingRoom;
-        this.doctorsRoom = doctorsRoom;
+        this.waitingRoom = new ArrayList<>();
+        this.doctorsRoom = new ArrayList<>();
     }
 
-    public int checkIn(){
+    public void checkIn(Patient patient){
         waitingRoom.add(patient);
+    }
+
+    public int getWaitingRoomLength() {
         return waitingRoom.size();
     }
 
-    public int doctorSeePatient(){
-        doctorsRoom.add(patient);
-        if (doctorsRoom.size() > 0)
-        waitingRoom.remove(patient);
+    public int getDoctorsRoomLength() {
         return doctorsRoom.size();
-
     }
 
-    public String doctorTreatPatient(){
+    public void doctorSeePatient(Patient patient){
+        if (waitingRoom.contains(patient)){
+            doctorsRoom.add(patient);
+            waitingRoom.remove(patient);
+        }
+    }
+
+    public String doctorTreatPatient(Patient patient){
         if (patient.getSymptomlevel() == SymptomLevel.High)
-       return doctor.administer();
-       else
-           return "no medicine required";
+            return doctor.administer();
+        else
+            return "no medicine required";
 
     }
 }
